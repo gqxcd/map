@@ -174,6 +174,7 @@ public class MapUI extends JFrame {
 		int side = r.nextInt(4);
 
 		int direction;
+		end point 
 
 		int x;
 		int y;
@@ -182,91 +183,33 @@ public class MapUI extends JFrame {
 		// up side
 		if (side == 0) {
 			x = r.nextInt(configure.column);
-			direction = r.nextInt(3)+1;
-			// right
-			if (direction == 1) {
-				for (int i = x; i < x + 20 && i <= 120; i++)
-					highway[0][i] = 3;
-			}
-			// down
-			if (direction == 2) {
-				for (int i = 0; i <= 20; i++)
-					highway[x][i] = 3;
-			}
-			// left
-			if (direction == 3) {
-				for(int i = x; i < x - 20 && i >= 0; i--)
-					highway[0][i]=3;
-			}
-
+			for (int i = 0; i <= 20; i++)
+				highway[x][i] = 3;
 		}
 
 		// right side
 		if (side == 1) {
 			y = r.nextInt(configure.row);
-			direction = r.nextInt(0,2,3);
-			// up
-			if (direction == 0) {
-				for (int i = y; i > y - 20 && i >= 0; i--)
-					highway[i][159] = 3;
-			}
-			// down
-			if (direction == 2) {
-				for (int i = y; i < y + 20 && i <= 120; i++)
-					highway[i][159] = 3;
-			}
-			// left
-			if (direction == 3) {
-				for (int i = 159; i <= 140; i--)
-					highway[y][i] = 3;
-			}
+			for (int i = 159; i <= 140; i--)
+				highway[y][i] = 3;
 		}
 
 		// down side
-		if (side == 0) {
+		if (side == 2) {
 			x = r.nextInt(configure.column);
-			direction = r.nextInt(0,1,3);
-			// up
-			if (direction == 0) {
-				for (int i = 119; i <= 100; i++)
-					highway[i][x] = 3;
-			}
-			// right
-			if (direction == 1) {
-				for (int i = x; i < x+20 && i <= 159; i++)
-					highway[119][i] = 3;
-			}
-			// left
-			if (direction == 3) {
-				for(int i = x; i > x - 20 && i >= 0; i--)
-					highway[119][i]=3;
-			}
-
+			for (int i = 119; i <= 100; i++)
+				highway[i][x] = 3;
 		}
 
 		// left side
-		if (side == 4) {
-			y = r.nextInt(configure.row);
-			direction = r.nextInt(0,1,2);
-			// up
-			if (direction == 0) {
-				for (int i = y; i > y - 20 && i >= 0; i--)
-					highway[i][0] = 3;
-			}
-			// right
-			if (direction == 1) {
-				for (int i = 0; i <20 ; i++)
-					highway[y][i] = 3;
-			}
-			// down
-			if (direction == 2) {
-				for (int i = y; i < y + 20 && i <= 120; i++)
-					highway[i][0] = 3;
-			}
+		if (side == 3) {
+			for (int i = 0; i <20 ; i++)
+				highway[y][i] = 3;
 		}
-
-
 	}
+
+
+	void Highway 
 
 	/**
 	 * 
