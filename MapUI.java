@@ -18,7 +18,11 @@ public class MapUI extends JFrame {
 
 	int[][] grid = new int[configure.row][configure.column];// ÁÐÊý
 	int[][] highway = new int[configure.row][configure.column];
-
+	int direction;
+	int endpoint_x;
+	int endpoint_y;
+	int highway_length;
+	Random r = new Random();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new MapUI().init();
@@ -124,7 +128,6 @@ public class MapUI extends JFrame {
 	public void createHardtraverse() {
 
 		for (int k = 0; k < 8; k++) {
-			Random r = new Random();
 			int y = r.nextInt(configure.row);
 			int x = r.nextInt(configure.column);
 
@@ -167,56 +170,81 @@ public class MapUI extends JFrame {
 
 	}
 
-	public void createHighway() {
+	public void initHighway() {
 
-		// 0-left,1-up,2-right,3-down
-		Random r = new Random();
+		//0-4 means up, right, down, left seperately
 		int side = r.nextInt(4);
-
-		int direction;
-		end point 
-
 		int x;
 		int y;
-
+		highway_length = 20;
 		
-		// up side
+		//highway build from upper side
 		if (side == 0) {
 			x = r.nextInt(configure.column);
 			for (int i = 0; i <= 20; i++)
-				highway[x][i] = 3;
+				highway[i][x] = 3;
+			direction = 2; 
+			endpoint_y = 20;
+			endpoint_x = x;
 		}
 
-		// right side
+		// highway start from right side
 		if (side == 1) {
 			y = r.nextInt(configure.row);
-			for (int i = 159; i <= 140; i--)
+			for (int i = configue.column-1; i >= configue.column-20; i--)
 				highway[y][i] = 3;
+			direction = 3;
+			endpoint_y = y;
+			endpoint_x = 140;
 		}
 
-		// down side
+		// highway start from bottom
 		if (side == 2) {
 			x = r.nextInt(configure.column);
-			for (int i = 119; i <= 100; i++)
+			for (int i = configue.row-1; i <= configue.row-20; i--)
 				highway[i][x] = 3;
+			direction = 4;
+			endpoint_y = 100;
+			endpoint_x = x;
 		}
 
-		// left side
+		// highway starts from left side
 		if (side == 3) {
 			for (int i = 0; i <20 ; i++)
 				highway[y][i] = 3;
+			direction = 1;
+			endpoint_y = y;
+			endpoint_x = 19;
 		}
 	}
 
+	public void createHighway(){
+		//Check if a highway reach an boundry
+		if(endpoint_y == 0||endpoint_y == configure.row-1||endpoint_x==0 ||endpoint_x==configure.column-1){
+			if(highway_length<100); //recall function to be continued 
+			return;
+		} 
 
-	void Highway 
+		// If a highway doesn't reach the boundry
+		int p;
+		p = r.nextInt(5);
+
+		// change direction according to the possibilities
+		if(p == 0 || p == 1 || p == 2);
+		if(p == 3){direction = (direction - 1) mod 4;} 
+		if(p == 4){direction = (direction + 1) mod 4;}
+
+		if (direction == 0)
+
+
+
+	} 
 
 	/**
 	 * 
 	 * @return
 	 */
 	private boolean ishard() {
-		Random r = new Random();
 		if (r.nextInt(2) == 1)
 			return true;
 		else
@@ -224,7 +252,6 @@ public class MapUI extends JFrame {
 	}
 
 	private boolean isblocked() {
-		Random r = new Random();
 		if (r.nextInt(5) == 0)
 			return true;
 		else
