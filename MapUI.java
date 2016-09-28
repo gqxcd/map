@@ -204,7 +204,7 @@ public class MapUI extends JFrame {
 		// right side
 		if (side == 1) {
 			y = r.nextInt(configure.row);
-			direction = r.nextInt(3);
+			direction = r.nextInt(0,2,3);
 			// up
 			if (direction == 0) {
 				for (int i = y; i > y - 20 && i >= 0; i--)
@@ -225,7 +225,7 @@ public class MapUI extends JFrame {
 		// down side
 		if (side == 0) {
 			x = r.nextInt(configure.column);
-			direction = r.nextInt(3) + 1;
+			direction = r.nextInt(0,1,3);
 			// up
 			if (direction == 0) {
 				for (int i = 119; i <= 100; i++)
@@ -247,14 +247,14 @@ public class MapUI extends JFrame {
 		// left side
 		if (side == 4) {
 			y = r.nextInt(configure.row);
-			direction = r.nextInt(3);
+			direction = r.nextInt(0,1,2);
 			// up
 			if (direction == 0) {
 				for (int i = y; i > y - 20 && i >= 0; i--)
 					highway[i][0] = 3;
 			}
 			// right
-			if (direction == 3) {
+			if (direction == 1) {
 				for (int i = 0; i <20 ; i++)
 					highway[y][i] = 3;
 			}
